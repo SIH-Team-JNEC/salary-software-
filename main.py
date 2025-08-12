@@ -1,4 +1,5 @@
 import tkinter as tk
+from login_page.ui.login_page_ui import LoginPage
 
 # 🪟 Make a window
 window = tk.Tk()
