@@ -1,20 +1,27 @@
-import tkinter as tk
-from login_page.ui.login_page_ui import LoginPage
+from flet import Page, Column, Row
+from components.header import Header
+from components.sidebar import Sidebar
+from components.footer import Footer
+from pages.main_page import MainPage
+from pages.employee_page import EmployeePage
 
-# 🪟 Make a window
-window = tk.Tk()
-window.title("My First GUI")
+def main(page: Page):
+    page.title = "Admin Dashboard"
+    page.vertical_alignment = "start"
 
-# 🏷️ Add a label
-label = tk.Label(window, text="Hello! I'm a label!")
-label.pack()
+    header = Header()
+    sidebar = Sidebar()
+    main_page = MainPage()
+    employee_page = EmployeePage()
 
-# 🔘 Add a button that changes the label
-def on_button_click():
-    label.config(text="You clicked the button!")
+    page.add(
+        Column([
+            header,
+            Row([sidebar, main_page], expand=True),
+            Footer()
+        ], expand=True)
+    )
 
-button = tk.Button(window, text="Click me!", command=on_button_click)
-button.pack()
-
-# 🏁 Show the window
-window.mainloop()
+if __name__ == "__main__":
+    import flet as ft
+    ft.app(target=main)
