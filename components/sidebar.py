@@ -1,12 +1,12 @@
-from flet import Column, Text, IconButton, Icons  # Change 'icons' to 'Icons'
+from flet import Column, Text, IconButton, Icons  # Ensure you have the correct import
 
 def Sidebar():
     return Column(
         [
             Text("Menu", size=20, weight="bold"),
-            IconButton(Icons.HOME, tooltip="Home"),  # Change 'icons.HOME' to 'Icons.HOME'
-            IconButton(Icons.PERSON, tooltip="Employees"),  # Change 'icons.PERSON' to 'Icons.PERSON'
-            IconButton(Icons.STATISTICS, tooltip="Statistics"),  # Change 'icons.STATISTICS' to 'Icons.STATISTICS'
+            IconButton(Icons.HOME, tooltip="Home"),
+            IconButton(Icons.PERSON, tooltip="Employees"),
+            IconButton(Icons.STATS, tooltip="Statistics"),  # Use a valid icon here
         ],
         width=200,
         padding=10,
