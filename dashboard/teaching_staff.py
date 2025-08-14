@@ -7,3 +7,5 @@ def teaching_staff_page(page: ft.Page):
     staff_text = ft.Text("Welcome to the Teaching Staff Page!", size=48)
 
     page.add(staff_text)
+
+    
