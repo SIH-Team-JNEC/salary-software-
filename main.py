@@ -1,27 +1,25 @@
-from flet import Page, Column, Row
-from components.header import Header
-from components.sidebar import Sidebar
-from components.footer import Footer
-from pages.main_page import MainPage
-from pages.employee_page import EmployeePage
+import flet as ft
+from dashboard.dashboard_page import dashboard_page
+from database.database import add_user, get_users
 
-def main(page: Page):
-    page.title = "Admin Dashboard"
-    page.vertical_alignment = "start"
+add_user('john_doe', 'john@example.com', "AB+ve")
 
-    header = Header()
-    sidebar = Sidebar()
-    main_page = MainPage()
-    employee_page = EmployeePage()
+# Retrieve and print all users
+users = get_users()
+for user in users:
+    print(f'ID: {user[0]}, Username: {user[1]}, Email: {user[2]}, Blood group: {user[3]}')
 
-    page.add(
-        Column([
-            header,
-            Row([sidebar, main_page], expand=True),
-            Footer()
-        ], expand=True)
-    )
 
-if __name__ == "__main__":
-    import flet as ft
-    ft.app(target=main)
+def main(page: ft.Page):
+    page.title = "Simple Counter App"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+
+    def go_to_dashboard(e):
+        page.clean()  # Clear the current page
+        dashboard_page(page)  # Call the dashboard page function
+
+    dashboard_button = ft.ElevatedButton(text="Go to Dashboard", on_click=go_to_dashboard)
+
+    page.add(dashboard_button)
+
+ft.app(target=main)
