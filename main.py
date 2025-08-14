@@ -1,27 +1,16 @@
-from flet import Page, Column, Row
-from components.header import Header
-from components.sidebar import Sidebar
-from components.footer import Footer
-from pages.main_page import MainPage
-from pages.employee_page import EmployeePage
+import flet as ft
+from dashboard.dashboard_page import dashboard_page
 
-def main(page: Page):
-    page.title = "Admin Dashboard"
-    page.vertical_alignment = "start"
+def main(page: ft.Page):
+    page.title = "Simple Counter App"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
 
-    header = Header()
-    sidebar = Sidebar()
-    main_page = MainPage()
-    employee_page = EmployeePage()
+    def go_to_dashboard(e):
+        page.clean()  # Clear the current page
+        dashboard_page(page)  # Call the dashboard page function
 
-    page.add(
-        Column([
-            header,
-            Row([sidebar, main_page], expand=True),
-            Footer()
-        ], expand=True)
-    )
+    dashboard_button = ft.ElevatedButton(text="Go to Dashboard", on_click=go_to_dashboard)
 
-if __name__ == "__main__":
-    import flet as ft
-    ft.app(target=main)
+    page.add(dashboard_button)
+
+ft.app(target=main)
