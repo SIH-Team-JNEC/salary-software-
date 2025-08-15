@@ -1,4 +1,4 @@
-import payroll_app.employee_main_database as db
+import payroll_sqlite.employee_main_database as db
 
 def main():
     db.create_table()
