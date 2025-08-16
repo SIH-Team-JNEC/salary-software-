@@ -1,3 +1,4 @@
+from dashboard import non_teaching_staff
 import flet as ft
 import dashboard.teaching_staff as teaching_staff
 
@@ -5,17 +6,51 @@ def dashboard_page(page: ft.Page):
     page.title = "Dashboard"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    dashboard_text = ft.Text("Welcome to the Dashboard!", size=48)
+    dashboard_text = ft.Text("Welcome to the Dashboard!", size=48) 
+    content = ft.Container(
+        content=dashboard_text,
+        alignment=ft.alignment.center, # Example: center the text within the container
+        padding=ft.padding.only(top=100, left=50) # Example: add padding to move it
+    )
+    
+    page.add(content)
 
     def teaching_staff_page(e):
         page.clean()
         teaching_staff.teaching_staff_page(page)
     dashboard_button1 = ft.ElevatedButton(text="teaching staff", on_click=teaching_staff_page)
+    page.add(
+        ft.Stack(
+            [
+                ft.Container(
+                    content=dashboard_button1,
+                    left=200,   # distance from the left edge
+                    top=150     # distance from the top edge
+                )
+            ],
+            expand=True  # make the Stack fill the window
+        )
+    )
+
+    
 
     def non_teaching_staff_page(e):
         page.clean()
         non_teaching_staff.non_teaching_staff_page(page)
     dashboard_button2 = ft.ElevatedButton(text="non-teaching staff", on_click=non_teaching_staff_page)
+    page.add(
+        ft.Stack(
+            [
+                ft.Container(
+                    content=dashboard_button2,
+                    left=500,   # distance from the left edge
+                    top=5     # distance from the top edge
+                )
+            ],
+            expand=True  # make the Stack fill the window
+        )
+    )
+
 
     def cleaning_staff_page(e):
         page.clean()
