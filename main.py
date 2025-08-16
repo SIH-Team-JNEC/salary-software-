@@ -1,4 +1,5 @@
 import payroll_sqlite.employee_main_database as db
+import payroll_app.setup_db
 
 def main():
     db.create_table()
