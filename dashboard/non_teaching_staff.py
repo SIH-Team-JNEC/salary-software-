@@ -1,4 +1,5 @@
 import flet as ft
+import dashboard.entry_page as entry_page   # make sure you imported this
 
 def non_teaching_staff_page(page: ft.Page):
     page.title = "Non-Teaching Staff"
@@ -41,28 +42,33 @@ def non_teaching_staff_page(page: ft.Page):
         ],
     )
 
-    # Buttons
-    def entry_page(e):
+    # ✅ Correct handler name
+    def open_entry_page(e):
         page.clean()
-        entry_page.entry_page(page)
-    add_btn = ft.ElevatedButton("Add", icon=ft.Icons.ADD, bgcolor=ft.Colors.BLUE, color="white" , on_click=entry_page)
-    edit_btn = ft.ElevatedButton("Edit", icon=ft.Icons.EDIT, bgcolor=ft.Colors.YELLOW, color="black" )
+        entry_page.entry_pg(page)   # <-- make sure `entry_pg` is the actual function in entry_page.py
+
+    # Buttons
+    add_btn = ft.ElevatedButton(
+        "Add", 
+        icon=ft.Icons.ADD, 
+        bgcolor=ft.Colors.BLUE, 
+        color="white", 
+        on_click=open_entry_page   # ✅ now matches function name
+    )
+    edit_btn = ft.ElevatedButton("Edit", icon=ft.Icons.EDIT, bgcolor=ft.Colors.YELLOW, color="black")
     delete_btn = ft.ElevatedButton("Delete", icon=ft.Icons.DELETE, bgcolor=ft.Colors.RED, color="white")
 
-# Wrap table inside a horizontally scrollable container
+    # Wrap table inside a horizontally scrollable container
     data_table = ft.Row(
         [data_table],
-        scroll="always",   # enables horizontal scrolling
+        scroll="always",
         expand=1,
     )
 
     # Layout
-    page.add( 
+    page.add(
         staff_text,
         ft.Row([add_btn, edit_btn, delete_btn], alignment=ft.MainAxisAlignment.START, spacing=20),
         data_table
     )
     page.update()
-
-    
-

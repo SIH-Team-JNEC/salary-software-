@@ -4,6 +4,7 @@ import dashboard.non_teaching_staff as non_teaching_staff
 import dashboard.cleaning_staff as cleaning_staff
 import dashboard.accounting_staff as accounting_staff
 import dashboard.it_staff as it_staff
+import dashboard.entry_page as entry_page
 
 def dashboard_page(page: ft.Page):
     page.title = "Dashboard"

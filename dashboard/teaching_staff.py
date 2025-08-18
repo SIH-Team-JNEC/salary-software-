@@ -1,4 +1,5 @@
 import flet as ft
+import dashboard.entry_page as entry_page
 
 def teaching_staff_page(page: ft.Page):
     page.title = "Teaching Staff"
@@ -42,10 +43,10 @@ def teaching_staff_page(page: ft.Page):
     )
 
     # Buttons
-    def entry_page(e):
+    def switch_entry_page(e):
         page.clean()
-        entry_page.entry_page(page)
-    add_btn = ft.ElevatedButton("Add", icon=ft.Icons.ADD, bgcolor=ft.Colors.BLUE, color="white" , on_click=entry_page)
+        entry_page.entry_pg(page)
+    add_btn = ft.ElevatedButton("Add", icon=ft.Icons.ADD, bgcolor=ft.Colors.BLUE, color="white" , on_click=switch_entry_page)
     edit_btn = ft.ElevatedButton("Edit", icon=ft.Icons.EDIT, bgcolor=ft.Colors.YELLOW, color="black" )
     delete_btn = ft.ElevatedButton("Delete", icon=ft.Icons.DELETE, bgcolor=ft.Colors.RED, color="white")
 
